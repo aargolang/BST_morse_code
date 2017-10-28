@@ -1,5 +1,5 @@
-#ifndef BST_node
-#define BST_node
+	#ifndef BST_node
+	#define BST_node
 
 #include <iostream>
 #include <fstream>
@@ -18,13 +18,15 @@ public:
 	void setData(T newData2, V newData);
 	void setRight(BSTNode<T,V> &rightNode);
 	void setLeft(BSTNode<T,V> &leftNode);
-	T &getData1();
-	V &getData2();
+	void setRight();
+	void setLeft();
+	T getData1();
+	V getData2();
 	BSTNode<T,V> *&getRight();
 	BSTNode<T,V> *&getLeft();
 
-	friend std::ostream & operator<< (std::ostream &lhs, BSTNode<T,V> &rhs);
-	friend std::ifstream & operator>> (std::ifstream &lhs, BSTNode<T,V> &rhs);
+	// friend std::ostream & operator<< (std::ostream &lhs, BSTNode<T,V> &rhs);
+	// friend std::ifstream & operator>> (std::ifstream &lhs, BSTNode<T,V> &rhs);
 
 private:
 	T data1;
@@ -66,19 +68,27 @@ void BSTNode<T, V>::setData(T newData1, V newData2) {
 	data2 = newData2;
 }
 template <class T, class V>
-void BSTNode<T, V>::setRight(BSTNode &rightNode) {
+void BSTNode<T, V>::setRight(BSTNode<T,V> &rightNode) {
 	pRight = &rightNode;
 }
 template <class T, class V>
-void BSTNode<T, V>::setLeft(BSTNode &leftNode) {
+void BSTNode<T, V>::setLeft(BSTNode<T,V> &leftNode) {
 	pLeft = &leftNode;
 }
 template <class T, class V>
-T &BSTNode<T, V>::getData1() {
+void BSTNode<T, V>::setRight() {
+	pRight = nullptr;
+}
+template <class T, class V>
+void BSTNode<T, V>::setLeft() {
+	pLeft = nullptr;
+}
+template <class T, class V>
+T BSTNode<T, V>::getData1() {
 	return data1;
 }
 template <class T, class V>
-V &BSTNode<T, V>::getData2() {
+V BSTNode<T, V>::getData2() {
 	return data2;
 }
 template <class T, class V>
@@ -88,30 +98,6 @@ BSTNode<T, V> *&BSTNode<T, V>::getRight() {
 template <class T, class V>
 BSTNode<T, V> *&BSTNode<T, V>::getLeft() {
 	return pLeft;
-}
-
-// operator overloading
-template <class T, class V>
-std::ostream &operator<< (std::ostream & lhs, BSTNode<T, V> &rhs) {
-	lhs << rhs.getData1();
-	lhs << " -> ";
-	lhs << rhs.getData2();
-	return lhs;
-}
-template <class T, class V>
-std::ifstream &operator >> (std::ifstream &lhs, BSTNode<T, V> &rhs) {
-	std::string mCode;
-	char letter;
-
-	lhs >> letter;
-	lhs >> mCode;
-
-	if ((int)letter >= (int)'A') {
-		letter = letter + (int)'A' - (int)'a';
-	}
-
-	rhs.setData(letter, mCode);
-	return lhs;
 }
 
 #endif

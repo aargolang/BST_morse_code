@@ -1,2 +1,2 @@
-Test some converting
-This is the next line
+This is a test of the cpts 122
+Morse code conversion tool.
