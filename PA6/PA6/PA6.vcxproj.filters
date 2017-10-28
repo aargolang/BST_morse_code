@@ -33,4 +33,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="alpha.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="MorseTable.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="Convert.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+  </ItemGroup>
 </Project>
